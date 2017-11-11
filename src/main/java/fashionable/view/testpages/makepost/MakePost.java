@@ -10,12 +10,14 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 
+@lombok.extern.slf4j.Slf4j
 public class MakePost {
 	private static final String TEMPLATE_NAME = "testpost.ftm";
 
 	public MakePost(Request req, Response res) {
-		;
+		log.debug("Creating new MakePost");
 	}
+	
 	public static Route route(Configuration freemarker) {
 		return (req, res) -> {
 			try (Writer sw = new StringWriter()) {
