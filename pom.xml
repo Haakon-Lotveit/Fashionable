@@ -22,11 +22,16 @@
 			<artifactId>spark-core</artifactId>
 			<version>2.7.0</version>
 		</dependency>
-		<!-- SparkJava uses logback for logging -->
+		<!-- SparkJava uses slf4j, and thus we need an implementation for logging -->
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<version>1.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sparkjava</groupId>
+			<artifactId>spark-template-freemarker</artifactId>
+			<version>2.5.5</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>

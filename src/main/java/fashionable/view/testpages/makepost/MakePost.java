@@ -6,13 +6,14 @@ import java.io.Writer;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
+import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 import spark.Route;
 
 @lombok.extern.slf4j.Slf4j
 public class MakePost {
-	private static final String TEMPLATE_NAME = "testpost.ftm";
+	public static final String TEMPLATE_NAME = "testpost.ftm";
 
 	public MakePost(Request req, Response res) {
 		log.debug("Creating new MakePost");
