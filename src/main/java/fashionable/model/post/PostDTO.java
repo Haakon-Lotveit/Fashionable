@@ -3,13 +3,14 @@ package fashionable.model.post;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import fashionable.model.user.ForumUser;
+
 @lombok.Value
-public class Post {
-	String author;
+public class PostDTO {
+	UUID id;
+	UUID authorId;
 	LocalDateTime timestamp;
 	String thread;
-	int sequenceNumber;
-	UUID id;
-	String status;
-	
+	String rawContent;
+	PostStatus status;
 }

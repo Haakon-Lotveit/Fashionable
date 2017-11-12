@@ -5,5 +5,8 @@
 <title>You have told the system to create a post!</title>
 </head>
 <body>
-  <h1>You told the system to create a post, but the system is so far too retarded to actually do anything</h1>
+    <h1>You created a post!</h1>
+    <p>
+	${post}
+    </p>
 </body>
