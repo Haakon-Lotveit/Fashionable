@@ -5,5 +5,14 @@
 <title>Creating a singular post and displaying it</title>
 </head>
 <body>
-  <h1>There's supposed to be a form here, but no such thing yet exists...</h1>
+  <h1>This form does not yet work properly</h1>
+  <form action="/create/post" method="post">
+    <div>
+      <label for="forum-post"></label>
+      <textarea id="forum-post" name="forum-post" col="80", row="24"></textarea>
+    </div>
+    <div>
+      <button type="submit">Submit your post</button>
+    </div>
+  </form>
 </body>

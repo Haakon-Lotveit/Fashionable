@@ -1,4 +1,4 @@
-package fashionable.view.testpages.makepost;
+package fashionable.model.post;
 
 import java.io.IOException;
 import java.io.StringWriter;

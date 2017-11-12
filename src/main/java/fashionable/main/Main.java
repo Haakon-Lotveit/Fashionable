@@ -3,7 +3,8 @@ package fashionable.main;
 import java.io.File;
 import java.io.IOException;
 
-import fashionable.view.testpages.makepost.MakePost;
+import fashionable.model.post.CreatePost;
+import fashionable.model.post.MakePost;
 import freemarker.template.Configuration;
 import freemarker.template.TemplateExceptionHandler;
 import lombok.val;
@@ -20,13 +21,10 @@ public class Main {
 		// Set up Spark
 		Spark.port(8081);
 		Spark.get("/hello", (req, res) -> "Spark works just fine");
-		Spark.get(
-				"/test/post",
-				(req, res) -> new ModelAndView(
-						new MakePost(req, res),
-						MakePost.TEMPLATE_NAME),
-				freemarkerEngine);
-
+		
+		Spark.get("/test/post", (req, res) -> freemarkerEngine.render(new ModelAndView(new MakePost(req, res), MakePost.TEMPLATE_NAME)));
+		Spark.post("/create/post", (req, res) -> freemarkerEngine.render(new ModelAndView(new CreatePost(req, res), CreatePost.TEMPLATE_NAME)));
+				
 		// It might be neat to have something like this, but that's for later...
 		//		pathBuilder.freemarker().path("/...").model(MakePost::new).template(MakePost.TEMPLATE_NAME).get();
 	}
@@ -38,9 +36,7 @@ public class Main {
 	 * @throws IOException if anything goes wrong, for example, if it cannot locate the directory for template loading.
 	 */
 	public static Configuration setupFreemarkerDev() throws IOException {
-		// Everything here is for development, none of this is for an actual program in maintenance.
 		Configuration out = new Configuration(Configuration.getVersion()); // Always use newest. This is fine for dev.
-		// For example, this works *because* we're in a maven project and are developing. Not in prod.
 		out.setDirectoryForTemplateLoading(new File("src/main/resources/freemarker"));
 		out.setTemplateExceptionHandler(TemplateExceptionHandler.HTML_DEBUG_HANDLER);
 		out.setLogTemplateExceptions(true);
